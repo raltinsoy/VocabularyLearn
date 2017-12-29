@@ -1,5 +1,5 @@
 import { Mongo } from 'meteor/mongo';
-//import { SimpleSchema } from 'meteor/aldeed:simple-schema';
+import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 
 class WordsCollection extends Mongo.Collection{
   insert(doc, callback){

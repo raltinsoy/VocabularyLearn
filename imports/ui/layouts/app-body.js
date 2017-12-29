@@ -3,7 +3,7 @@ import { Template } from 'meteor/templating';
 //import { ReactiveDict } from 'meteor/reactive-dict';
 
 import { Words } from '../../api/words/words.js';
-//import { insert } from '../../api/words/methods.js';
+import { insert } from '../../api/words/methods.js';
 
 import './app-body.html';
 
@@ -15,11 +15,20 @@ Template.body.helpers({
   words(){
     return Words.find({});
   },
+});
 
-/*  'click ..js-new-list'(){
+Template.body.events({
+  'submit .new-task'(event){
+    // Prevent default browser form submit
+    event.preventDefault();
+    
+    const target = event.target;
+    const text = target.text.value;
+
     insert.call({
-      listId:this.list()._id,
-      text:$input.val(),
-    }, displayError);
-  }*/
+      text:text,
+    });
+
+    target.text.value='';
+  },
 });
