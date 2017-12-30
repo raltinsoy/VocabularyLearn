@@ -1,6 +1,8 @@
 @import './utils.less';
 
 @menu-width: 270px;
+@dayWork-width: 270px;
+@weekWork-width: 270px;
 @column: 5.55555%;
 
 body {
@@ -32,11 +34,21 @@ body {
   .position(absolute, 0, 0, 0, 0, @menu-width);
 }
 
+#dayWork {
+  .position(none, 0, 0, 0, 0, @dayWork-width);
+  float:left;
+}
+
+#weekWork {
+  .position(none, 0, 0, 0, 0, @weekWork-width);
+  float:left;
+}
+
 #content-container {
   .position(absolute, 0, 0, 0, 0);
   transition: all 200ms ease-out;
   transform: translate3d(0, 0, 0);
-  background: @color-tertiary;
+  //background: @color-tertiary;
   opacity: 1;
 
   .page {

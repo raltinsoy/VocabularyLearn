@@ -1,29 +1,7 @@
 <body>
     <div id="container" class="">
-      <section id="menu">
-        <div class="language-toggle">
-        </div>
 
-
-        <div class="list-todos">
-
-          <form class="new-task todo-new">
-            <input type="input" name="text" placeholder="Type to add new tasks" />
-          </form>
-
-          {{#each words}}
-            <a class="list-todo">
-              <span id="wordDelete" class="icon-close"></span>
-              <!-- {{#if list.incompleteCount}} -->
-                <!-- <span class="count-list">{{list.incompleteCount}}</span> -->
-              <span class="count-list">()</span>
-              <!-- {{/if}} -->
-              {{text}}
-            </a>
-          {{/each}}
-
-        </div>
-      </section>
+      {{> word_List }}
 
       <!-- {{#unless connected}}
         <div class="notifications">
@@ -44,6 +22,11 @@
       <div class="content-overlay"></div>
 
       <div id="content-container">
+
+        {{> day_Works }}
+        {{> week_Works }}
+
+        {{> wordEdit }}
         <!-- {{#momentum plugin="fade"}}
           {{#if Template.subscriptionsReady}}
             {{> Template.dynamic template=main}}
@@ -52,5 +35,9 @@
           {{/if}}
         {{/momentum}} -->
       </div>
+      <div id="footer" style="border-style: dotted;width: 80%;height: 250px;bottom: 0px;position: absolute;">
+
+      </div>
+
     </div>
 </body>

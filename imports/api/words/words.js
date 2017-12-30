@@ -8,11 +8,10 @@ class WordsCollection extends Mongo.Collection{
     const result = super.insert(ourDoc,callback);
     return result;
   }
-  // update(selector, modifier) {
-  //   const result = super.update(selector, modifier);
-  //   incompleteCountDenormalizer.afterUpdateTodo(selector, modifier);
-  //   return result;
-  // }
+  update(selector, modifier) {
+    const result = super.update(selector, modifier);
+    return result;
+  }
   remove(selector) {
     const result = super.remove(selector);
     return result;

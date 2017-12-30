@@ -22,11 +22,48 @@ export const insert = new ValidatedMethod({
     const word = {
       // listId,
       text,
-      checked: false,
+      boxNumber:0,
       createdAt: new Date(),
     };
 
     Words.insert(word);
+  },
+});
+
+export const updateText = new ValidatedMethod({
+  name:'words.updateText',
+  validate:new SimpleSchema({
+    _id:{type:String,},
+    text:{type:String,},
+    boxNumber:{type:Number,},
+  }).validator(),
+  run({_id,text,boxNumber}){
+
+    Words.update(_id,{
+      $set:{
+        text:text,
+        boxNumber:boxNumber,}
+    });
+  },
+});
+
+export const update = new ValidatedMethod({
+  name:'words.update',
+  validate:new SimpleSchema({
+    _id:{type:String,},
+    boxNumber:{type:Number,},
+  }).validator(),
+  run({_id,boxNumber}){
+
+    const word=Words.findOne(_id);
+
+    if(word.boxNumber !== boxNumber-1 && word.boxNumber !== boxNumber+1){
+      throw new Meteor.Error('Birden fazla kutu atlayamazsın!');
+    }
+
+    Words.update(_id,{
+      $set:{boxNumber:boxNumber},
+    },);
   },
 });
 
@@ -38,4 +75,4 @@ export const remove = new ValidatedMethod({
   run({ _id }) {
     Words.remove(_id);
   },
-})
+});

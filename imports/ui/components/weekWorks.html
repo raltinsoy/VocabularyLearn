@@ -1,0 +1,22 @@
+<template name="week_Works">
+
+  <section id="weekWork">
+    Haftalık calısma
+    <div class="list-todos">
+
+      {{#each words}}
+        <a class="list-todo">
+          <span id="wordPrev" class="icon-arrow-down"></span>
+          <!-- {{#if list.incompleteCount}} -->
+            <!-- <span class="count-list">{{list.incompleteCount}}</span> -->
+          <span class="count-list">({{boxNumber}})</span>
+          <!-- {{/if}} -->
+          {{text}}
+          <span id="wordNext" class="icon-arrow-up"></span>
+        </a>
+      {{/each}}
+
+    </div>
+  </section>
+
+</template>
