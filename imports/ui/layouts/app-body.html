@@ -1,27 +1,56 @@
 <body>
-  <div class="container">
-    <header>
-      <!--<h1>Todo List ({{inComplateCount}})</h1>-->
+    <div id="container" class="">
+      <section id="menu">
+        <div class="language-toggle">
+        </div>
 
-      <label class="hide-completed">
-        <input type="checkbox" />
-        Hide Completed Tasks
-      </label>
 
-    <!--  {{> loginButtons}}-->
+        <div class="list-todos">
 
-      <!-- {{#if currentUser}} -->
-      <form class="new-task">
-        <input type="text" name="text" placeholder="Type to add new tasks" />
-      </form>
-      <!-- {{/if}} -->
-    </header>
+          <form class="new-task todo-new">
+            <input type="input" name="text" placeholder="Type to add new tasks" />
+          </form>
 
-    <ul>
-      {{#each words}}
-        <div>{{text}}</div>
-      {{/each}}
-    </ul>
+          {{#each words}}
+            <a class="list-todo">
+              <span id="wordDelete" class="icon-close"></span>
+              <!-- {{#if list.incompleteCount}} -->
+                <!-- <span class="count-list">{{list.incompleteCount}}</span> -->
+              <span class="count-list">()</span>
+              <!-- {{/if}} -->
+              {{text}}
+            </a>
+          {{/each}}
 
-  </div>
+        </div>
+      </section>
+
+      <!-- {{#unless connected}}
+        <div class="notifications">
+          <div class="notification">
+            <span class="icon-sync"></span>
+            <div class="meta">
+              <div class="title-notification">
+                {{_ 'layouts.appBody.tryingToConnect'}}
+              </div>
+              <div class="description">
+                {{_ 'layouts.appBody.connectionIssue'}}
+              </div>
+            </div>
+          </div>
+        </div>
+      {{/unless}} -->
+
+      <div class="content-overlay"></div>
+
+      <div id="content-container">
+        <!-- {{#momentum plugin="fade"}}
+          {{#if Template.subscriptionsReady}}
+            {{> Template.dynamic template=main}}
+          {{else}}
+            {{> App_loading}}
+          {{/if}}
+        {{/momentum}} -->
+      </div>
+    </div>
 </body>

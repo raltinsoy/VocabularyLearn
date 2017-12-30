@@ -20,12 +20,22 @@ export const insert = new ValidatedMethod({
     }*/
 
     const word = {
-      //listId,
+      // listId,
       text,
-      //checked: false,
+      checked: false,
       createdAt: new Date(),
     };
 
     Words.insert(word);
   },
 });
+
+export const remove = new ValidatedMethod({
+  name:'words.remove',
+  validate: new SimpleSchema({
+    _id:{type:String,},
+  }).validator(),
+  run({ _id }) {
+    Words.remove(_id);
+  },
+})
