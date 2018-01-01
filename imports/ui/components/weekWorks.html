@@ -2,20 +2,19 @@
 
   <section id="weekWork">
     Haftalık calısma
-    <div class="list-todos">
-
-      {{#each words}}
-        <a class="list-todo">
-          <span id="wordPrev" class="icon-arrow-down"></span>
-          <!-- {{#if list.incompleteCount}} -->
-            <!-- <span class="count-list">{{list.incompleteCount}}</span> -->
-          <span class="count-list">({{boxNumber}})</span>
-          <!-- {{/if}} -->
-          {{text}}
-          <span id="wordNext" class="icon-arrow-up"></span>
-        </a>
-      {{/each}}
-
+    <div class="dropdown clearfix">
+      <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu" style="display: block; position: static; margin-bottom: 5px; *width: 180px;">
+        {{#each words}}
+        <li>
+            <div class="input-prepend">
+              <span class="add-on" id="wordPrev"><span class="icon-thumbs-down"></span></span>
+              <a class="btn word-edit" tabindex="-1" href="#">{{text}}</a>
+              <span class="add-on"><span class="badge badge-succes">({{boxNumber}})</span></span>
+              <span class="add-on" id="wordNext"><span class="icon-thumbs-up"></span></span>
+          </div>
+        </li>
+        {{/each}}
+      </ul>
     </div>
   </section>
 

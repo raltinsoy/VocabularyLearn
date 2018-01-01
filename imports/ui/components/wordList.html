@@ -1,39 +1,25 @@
 <template name="word_List">
-  <section id="menu" style="height:380px;">
-    <div class="language-toggle">
-    </div>
+  <section id="menu">
 
-    <div class="list-todos">
-
-      <form class="new-task todo-new">
-        <input type="input" name="text" placeholder="Type to add new tasks" />
+      <form class="new-task form-search">
+        <input type="text" name="text" class="input-medium search-query">
+        <button type="submit" class="btn">Add</button>
       </form>
 
-      {{#each words}}
-        <a class="list-todo" style="width: 200px;display: inline-block;">
-          <span id="wordDelete" class="icon-trash"></span>
-          <!-- {{#if list.incompleteCount}} -->
-            <!-- <span class="count-list">{{list.incompleteCount}}</span> -->
-          <span class="count-list">({{boxNumber}})</span>
-          <!-- {{/if}} -->
-          {{text}}
-        </a>
-        <a class="word-right-move" style="float:right;margin-right: -10px;" ><span class="icon-arrow-up"></span></a>
-      {{/each}}
+      <div class="dropdown clearfix">
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu" style="display: block; position: static; margin-bottom: 5px; *width: 180px;">
+          {{#each words}}
+          <li>
+              <div class="input-prepend">
+                <span class="add-on"><i id="wordDelete" class="icon-trash"></i></span>
+                <a class="btn word-edit" tabindex="-1" href="#">{{text}}</a>
+                <span class="add-on"><span class="badge badge-succes">({{boxNumber}})</span></span>
+                <span class="add-on"><span class="word-right-move icon-thumbs-up"></span></span>
+            </div>
+          </li>
+          {{/each}}
+        </ul>
+      </div>
 
-    </div>
   </section>
-</template>
-
-<template name="wordEdit">
-  <div style="margin-left:600px;">
-    {{#if editing}}
-      <form class="new-task todo-new">
-        <input type="input" name="text" placeholder="" value="{{tmpWord.text}}" />
-        <input type="number" name="boxNumber" placeholder="" value="{{tmpWord.boxNumber}}" />
-        <button value="Duzenle">Duzenle</button>
-      </form>
-      <button class="cancel" value="İptal">İptal</button>
-    {{/if}}
-</div>
 </template>

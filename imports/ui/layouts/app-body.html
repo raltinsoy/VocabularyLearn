@@ -1,43 +1,36 @@
 <body>
-    <div id="container" class="">
+<link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
 
-      {{> word_List }}
+    <div class="container">
 
-      <!-- {{#unless connected}}
-        <div class="notifications">
-          <div class="notification">
-            <span class="icon-sync"></span>
-            <div class="meta">
-              <div class="title-notification">
-                {{_ 'layouts.appBody.tryingToConnect'}}
-              </div>
-              <div class="description">
-                {{_ 'layouts.appBody.connectionIssue'}}
-              </div>
-            </div>
-          </div>
-        </div>
-      {{/unless}} -->
+      <div class="row">
+        <div class="span4">{{> word_List }}</div>
+        <div class="span4">{{> day_Works }}</div>
+        <div class="span4">{{> week_Works }}</div>
+      </div>
 
       <div class="content-overlay"></div>
 
-      <div id="content-container">
 
-        {{> day_Works }}
-        {{> week_Works }}
-
-        {{> wordEdit }}
-        <!-- {{#momentum plugin="fade"}}
-          {{#if Template.subscriptionsReady}}
-            {{> Template.dynamic template=main}}
-          {{else}}
-            {{> App_loading}}
+          {{#if isEditing}}
+          <div class="pull-right">
+            <form class="form-search updateTask">
+              <div class="input-append">
+                <input type="text" class="span2" name="text" placeholder="" value="{{tmpWord.text}}" />
+                <input type="text" class="span2" name="boxNumber" placeholder="" value="{{tmpWord.boxNumber}}" />
+                <input type="submit" class="btn" value="Save changes">
+              </div>
+            </form>
+            <input type="submit" class="cancel btn" value="Cancel">
+          </div>
           {{/if}}
-        {{/momentum}} -->
-      </div>
-      <div id="footer" style="border-style: dotted;width: 80%;height: 250px;bottom: 0px;position: absolute;">
-
-      </div>
 
     </div>
+
+    <footer class="footer">
+      <div class="container">
+        <span class="text-muted">Place sticky footer content here.</span>
+      </div>
+    </footer>
+
 </body>
