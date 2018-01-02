@@ -2,18 +2,22 @@
   <section id="menu">
 
       <form class="new-task form-search">
-        <input type="text" name="text" class="input-medium search-query">
-        <button type="submit" class="btn">Add</button>
+        <div class="input-append">
+          <input type="text" name="text" class="input-medium search-query">
+          <button type="submit" class="btn">Add</button>
+        </div>
       </form>
 
       <div class="dropdown clearfix">
         <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu" style="display: block; position: static; margin-bottom: 5px; *width: 180px;">
+          <li class="nav-header">Word Store</li>
+          <li class="divider"></li>
           {{#each words}}
           <li>
               <div class="input-prepend">
                 <span class="add-on"><i id="wordDelete" class="icon-trash"></i></span>
                 <a class="btn word-edit" tabindex="-1" href="#">{{text}}</a>
-                <span class="add-on"><span class="badge badge-succes">({{boxNumber}})</span></span>
+                <span class="add-on"><span class="badge badge-success">({{boxNumber}})</span></span>
                 <span class="add-on"><span class="word-right-move icon-thumbs-up"></span></span>
             </div>
           </li>
@@ -22,4 +26,15 @@
       </div>
 
   </section>
+</template>
+
+<template name="word_edit">
+  <form class="form-search updateTask" style="float:left;">
+    <!-- <div class="input-append"> -->
+      <input type="text" class="input-medium" name="text" placeholder="" value="{{tmpWord.text}}" />
+      <input type="submit" class="btn" value="Save changes" onclick="this.parentNode.value='save';">
+      <input type="text" class="input-medium" name="boxNumber" placeholder="" value="{{tmpWord.boxNumber}}" />
+      <input type="submit" class="cancel btn" value="Cancel" onclick="this.parentNode.value='cancel';">
+    <!-- </div> -->
+  </form>
 </template>

@@ -1,36 +1,68 @@
 <body>
 <link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
 
-    <div class="container">
+  <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container-fluid">
+        <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="brand" href="#">Project name</a>
+        <div class="nav-collapse collapse">
+          <p class="navbar-text pull-right">
+            Logged in as <a href="#" class="navbar-link">Username</a>
+          </p>
+          <ul class="nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+  </div>
 
-      <div class="row">
-        <div class="span4">{{> word_List }}</div>
-        <div class="span4">{{> day_Works }}</div>
-        <div class="span4">{{> week_Works }}</div>
+  <div class="container-fluid">
+    <div class="row-fluid">
+
+      <div class="span3">
+        <div class="well slidebar-nav">
+          {{> word_List }}
+        </div>
+      </div>
+
+      <div class="span6 well">
+        <h4 class="text-center">Work Today</h4>
+        {{> work_Today }}
       </div>
 
       <div class="content-overlay"></div>
-
-
-          {{#if isEditing}}
-          <div class="pull-right">
-            <form class="form-search updateTask">
-              <div class="input-append">
-                <input type="text" class="span2" name="text" placeholder="" value="{{tmpWord.text}}" />
-                <input type="text" class="span2" name="boxNumber" placeholder="" value="{{tmpWord.boxNumber}}" />
-                <input type="submit" class="btn" value="Save changes">
-              </div>
-            </form>
-            <input type="submit" class="cancel btn" value="Cancel">
-          </div>
-          {{/if}}
-
     </div>
 
-    <footer class="footer">
-      <div class="container">
-        <span class="text-muted">Place sticky footer content here.</span>
+    <div class="row-fluid">
+      <div class="span3">
+      {{#if isEditing}}
+          {{> word_edit }}  <!-- >>wordList.html -->
+      {{/if}}
       </div>
+      <div class="span6">
+        {{#if isDetailsOpen}}
+          {{> word_details }} <!-- >>sentences.html -->
+        {{/if}}
+      </div>
+    </div>
+
+
+    <footer class="footer">
+      <!-- <div class="container"> -->
+        <span class="text-muted">Place sticky footer content here.</span>
+      <!-- </div> -->
     </footer>
 
+    <script src="http://getbootstrap.com/2.3.2/assets/js/jquery.js"></script>
+    <script src="http://getbootstrap.com/2.3.2/assets/js/bootstrap.js"></script>
+
+  </div>
 </body>

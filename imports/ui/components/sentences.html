@@ -1,0 +1,30 @@
+<template name="word_details">
+
+  <form class="new-sentence form-search">
+    <div class="input-append">
+      <input type="text" name="text" autocomplete="off" class="input-medium search-query">
+      <button type="submit" class="btn">Add</button>
+    </div>
+  </form>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Sentences</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+    {{#each dataDetails}}
+      <tr>
+        <td>{{ rowCount }}</td>
+        <td>{{ text }}</td>
+        <td><i id="sentenceEdit" class="icon-ok"></i></td>
+        <td><i id="sentenceDelete" class="icon-trash"></i></td>
+      </tr>
+    {{/each}}
+    </tbody>
+  </table>
+</template>

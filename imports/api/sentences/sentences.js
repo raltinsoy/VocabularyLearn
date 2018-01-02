@@ -1,11 +1,12 @@
 import { Mongo } from 'meteor/mongo';
 import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 
-class WordsCollection extends Mongo.Collection{
+class SentencesCollection extends Mongo.Collection{
   insert(doc, callback){
     const ourDoc = doc;
     ourDoc.createdAt = ourDoc.createdAt||new Date();
     const result = super.insert(ourDoc,callback);
+    
     return result;
   }
   update(selector, modifier) {
@@ -18,4 +19,4 @@ class WordsCollection extends Mongo.Collection{
   }
 }
 
-export const Words = new WordsCollection('words');
+export const Sentences = new SentencesCollection('sentences');
