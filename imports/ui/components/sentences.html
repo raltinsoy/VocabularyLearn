@@ -10,7 +10,7 @@
   <table class="table">
     <thead>
       <tr>
-        <th>#</th>
+        <th>#{{wordGet.text}}</th>
         <th>Sentences</th>
         <th>Edit</th>
         <th>Delete</th>
@@ -20,7 +20,7 @@
     {{#each dataDetails}}
       <tr>
         <td>{{ rowCount }}</td>
-        <td>{{ text }}</td>
+        <td class="sentenceConvertToInput">{{ text }}</td>
         <td><i id="sentenceEdit" class="icon-ok"></i></td>
         <td><i id="sentenceDelete" class="icon-trash"></i></td>
       </tr>
