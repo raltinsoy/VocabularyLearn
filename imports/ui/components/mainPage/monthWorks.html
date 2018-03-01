@@ -1,0 +1,23 @@
+<template name="month_Works">
+
+  <section id="monthWork">
+
+    <div class="dropdown clearfix">
+      <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu" style="display: block; position: static; margin-bottom: 5px; *width: 180px;">
+        <li class="nav-header">Aylık calısma</li>
+        <li class="divider"></li>
+        {{#each words}}
+        <li>
+            <div class="input-prepend">
+              <span class="add-on" id="wordPrev"><i class="fas fa-thumbs-down"></i></span>
+              <a class="btn word-details" tabindex="-1" href="#">{{text}}</a>
+              <span class="add-on"><span class="badge badge-success">({{boxNumber}})</span></span>
+              <span class="add-on" id="wordNext"><i class="fas fa-thumbs-up"></i></span>
+          </div>
+        </li>
+        {{/each}}
+      </ul>
+    </div>
+  </section>
+
+</template>

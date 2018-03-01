@@ -1,20 +1,24 @@
 import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
-//import { ReactiveDict } from 'meteor/reactive-dict';
+import { ReactiveDict } from 'meteor/reactive-dict';
 
-import { update } from '../../api/words/methods.js';
-import { Words } from '../../api/words/words.js';
+import { update } from '../../../api/words/methods.js';
+import { Words } from '../../../api/words/words.js';
 
 import './dayWorks.html';
 
-Template.day_Works.onCreated(function appBodyOnCreated() {
+Template.day_Works.onCreated(function () {
   this.state = new ReactiveDict();
-  Meteor.subscribe("words.list");
 });
 
 Template.day_Works.helpers({
   words(){
-    return Words.find({ boxNumber:1 },{ sort: { createdAt: -1 } });
+    var startDate = moment().startOf('day').format('MM/DD/YYYY');
+    var endDate = moment().add(1,'days').format('MM/DD/YYYY');
+    return Words.find({"$and":[
+      {remindDate: {$gte: startDate, $lt: endDate}},
+       {boxNumber:1}
+    ]},{ sort: { createdAt: -1 }});
   },
 });
 

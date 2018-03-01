@@ -4,6 +4,10 @@ import { ReactiveDict } from 'meteor/reactive-dict';
 
 import './workToday.html';
 
+import './dayWorks.js';
+import './weekWorks.js';
+import './monthWorks.js';
+
 Template.work_Today.onCreated(function appBodyOnCreated() {
   this.state = new ReactiveDict();
 

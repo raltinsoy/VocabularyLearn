@@ -2,14 +2,14 @@ import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 import { ReactiveDict } from 'meteor/reactive-dict';
 
-import { Words } from '../../api/words/words.js';
-import { insert, remove, update, updateText } from '../../api/words/methods.js';
+import { Words } from '../../../api/words/words.js';
+import { insert, remove, update, updateText } from '../../../api/words/methods.js';
 
 import './wordList.html';
 
-Template.word_List.onCreated(function appBodyOnCreated() {
+Template.word_List.onCreated(function () {
   this.state = new ReactiveDict();
-  Meteor.subscribe("words.list");
+  this.subscribe("words.list");
 
   Session.setDefault({
     isEditing:false,
@@ -33,14 +33,16 @@ Template.word_edit.events({
     const text = target.text.value;
     const action = target.value;
     const boxNumber = Number(target.boxNumber.value);
+    const remind_date = target.remindDate.value;
 
-    const tmpWord=Session.get('tmpWord'); // WHY !!!!!!!!!!!!!!!!!1
+    const tmpWord=Session.get('tmpWord'); // for _id
 
     if(action == 'save'){
       updateText.call({
         _id:tmpWord._id,
         text:text,
         boxNumber:boxNumber,
+        remindDate:remind_date,
       });
     }
     else if(action == 'cancel'){
@@ -86,7 +88,7 @@ Template.word_List.events({
   },
   'click .word-edit'(event,instance){
     // instance.state.set('isEditing',true);
-    const tmpWord={_id:this._id,text:this.text,boxNumber:this.boxNumber};
+    const tmpWord={_id:this._id,text:this.text,boxNumber:this.boxNumber,remindDate:this.remindDate};
     // instance.state.set('tmpWord',tmpWord);
     Session.set('isEditing',true);
     Session.set('tmpWord',tmpWord);

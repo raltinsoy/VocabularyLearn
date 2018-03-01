@@ -2,28 +2,36 @@ import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 import { ReactiveDict } from 'meteor/reactive-dict';
 
-import { Sentences } from '../../api/sentences/sentences.js';
-import { Words } from '../../api/words/words.js';
-import { insert, remove, update } from '../../api/sentences/methods.js';
+import { Sentences } from '../../../api/sentences/sentences.js';
+import { Words } from '../../../api/words/words.js';
+import { insert, remove, update } from '../../../api/sentences/methods.js';
 
 import './sentences.html';
 
 Template.body.onCreated(function appBodyOnCreated() {
   this.state = new ReactiveDict();
   Meteor.subscribe("sentences.list");
-  Meteor.subscribe("words.list");
 
+  Session.setDefault({
+    whichRowId:null,
+  });
 });
 
 Template.word_details.helpers({
   dataDetails(){
     const isDetailOpen = Session.get('isDetailsOpen');
     const id = Session.get('wordId');
+    const whichRowId = Session.get('whichRowId');
+
     if(isDetailOpen && id){
       let count=0;
       const data = Sentences.find({ wordId:id } , {sort : { createdAt: -1 }}).map(function(item){
         count++;
-        return _.extend(item, {rowCount: count});
+        const textChanged = false;
+        if(count == whichRowId){
+          textChanged = true;
+        }
+        return _.extend(item, {rowCount: count, isTextChanged: textChanged});
       });
       return data;
     }
@@ -31,10 +39,7 @@ Template.word_details.helpers({
   },
   wordGet(){
     const id = Session.get('wordId');
-    if(id){
-      return Words.findOne(id);
-    }
-    return null;
+    return Words.findOne(id);
   },
 });
 
@@ -52,27 +57,22 @@ Template.word_details.events({
     });
     target.text.value = '';
   },
-  'submit .edit-sentence'(event){  ////////////////////////////////kalınan yer
+  'submit .edit-sentence'(event){
     event.preventDefault();
+
     update.call({
       _id:this._id,
       wordId:this.wordId,
       text:event.target.text.value // new sentence
     });
-    var parent = document.getElementsByClassName("sentenceConvertToInput")[0];
-    var child = document.getElementsByClassName("edit-sentence")[0];
-    child.remove();
-    parent.innerHTML = event.target.text.value;
+
+    Session.set('whichRowId',null);
   },
   'click #sentenceEdit'(event){
     event.preventDefault();
 
-    const tdDom = document.getElementsByClassName("sentenceConvertToInput")[this.rowCount-1];
-    tdDom.innerHTML='<form class="edit-sentence form-search">'+
-                      '<div class="input-append">'+
-                        '<input name="text" class="input-medium search-query" type="text" value="'+this.text+'">'+
-                        '<button type="submit" class="btn">Add</button>'+
-                    '</div></form>';
+    Session.set('whichRowId',this.rowCount);
+
   },
   'click #sentenceDelete'(event){
     if(confirm('Are you sure? You are deleting: '+this.text)){
@@ -81,5 +81,8 @@ Template.word_details.events({
         wordId:this.wordId,
       });
     };
+  },
+  'click .close'(event){
+    Session.set('isDetailsOpen',false);
   },
 });

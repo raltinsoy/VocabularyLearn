@@ -36,13 +36,16 @@ export const updateText = new ValidatedMethod({
     _id:{type:String,},
     text:{type:String,},
     boxNumber:{type:Number,},
+    remindDate:{type:String,},
   }).validator(),
-  run({_id,text,boxNumber}){
+  run({_id,text,boxNumber,remindDate}){
 
     Words.update(_id,{
       $set:{
         text:text,
-        boxNumber:boxNumber,}
+        boxNumber:boxNumber,
+        remindDate:remindDate,
+      }
     });
   },
 });
@@ -62,7 +65,10 @@ export const update = new ValidatedMethod({
     }
 
     Words.update(_id,{
-      $set:{boxNumber:boxNumber},
+      $set:{
+        boxNumber: boxNumber,
+        remindDate: moment().add(1,'days').format('MM/DD/YYYY'),
+      },
     },);
   },
 });

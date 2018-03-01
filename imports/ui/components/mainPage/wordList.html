@@ -3,7 +3,7 @@
 
       <form class="new-task form-search">
         <div class="input-append">
-          <input type="text" name="text" class="input-medium search-query">
+          <input type="text" autocomplete="off" name="text" class="input-medium search-query">
           <button type="submit" class="btn">Add</button>
         </div>
       </form>
@@ -15,10 +15,10 @@
           {{#each words}}
           <li>
               <div class="input-prepend">
-                <span class="add-on"><i id="wordDelete" class="icon-trash"></i></span>
+                <span class="add-on"><i id="wordDelete" class="fas fa-trash-alt"></i></span>
                 <a class="btn word-edit" tabindex="-1" href="#">{{text}}</a>
                 <span class="add-on"><span class="badge badge-success">({{boxNumber}})</span></span>
-                <span class="add-on"><span class="word-right-move icon-thumbs-up"></span></span>
+                <span class="add-on"><i class="word-right-move fas fa-thumbs-up"></i></span>
             </div>
           </li>
           {{/each}}
@@ -34,6 +34,7 @@
       <input type="text" class="input-medium" name="text" placeholder="" value="{{tmpWord.text}}" />
       <input type="submit" class="btn" value="Save changes" onclick="this.parentNode.value='save';">
       <input type="text" class="input-medium" name="boxNumber" placeholder="" value="{{tmpWord.boxNumber}}" />
+      <input type="text" class="input-medium" name="remindDate" placeholder="" value="{{tmpWord.remindDate}}" />
       <input type="submit" class="cancel btn" value="Cancel" onclick="this.parentNode.value='cancel';">
     <!-- </div> -->
   </form>

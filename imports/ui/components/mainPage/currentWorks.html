@@ -1,0 +1,21 @@
+<template name="current_Works">
+
+  <section id="currentWork">
+
+    <div class="dropdown clearfix" style="display:flex;justify-content:center;">
+      <ul class="dropdown-menu text-center" role="menu" aria-labelledby="dropdownMenu" style="display: block; position: static; margin-bottom: 5px; *width: 180px;">
+        <li class="nav-header">Before Words</li>
+        <li class="divider"></li>
+        {{#each words}}
+        <li>
+          <div class="input-prepend">
+              <a class="btn word-edit" tabindex="-1" href="#">{{text}}</a>
+              <span class="add-on"><span class="badge badge-success">({{boxNumber}})</span></span>
+          </div>
+        </li>
+        {{/each}}
+      </ul>
+    </div>
+  </section>
+
+</template>

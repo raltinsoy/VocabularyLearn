@@ -1,0 +1,47 @@
+<template name="word_details">
+
+  <div class="well clearfix">
+    <button type="button" class="close" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+
+    <form class="new-sentence form-search">
+      <div class="input-append">
+        <input type="text" name="text" autocomplete="off" class="input-medium search-query">
+        <button type="submit" class="btn">Add</button>
+      </div>
+    </form>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th>#{{wordGet.text}}</th>
+          <th>Sentences</th>
+          <th>Edit</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+      {{#each dataDetails}}
+        <tr>
+          <td>{{ rowCount }}</td>
+          <td class="sentenceConvertToInput">
+            {{#if isTextChanged}}
+              <form class="edit-sentence form-search">
+               <div class="input-append">
+                 <textarea name="text" class="form-control" type="text" value="{{this.text}}"></textarea>
+                 <button type="submit" class="btn">Change</button>'
+               </div>
+             </form>
+            {{else}}
+              {{ text }}
+            {{/if}}
+          </td>
+          <td><i id="sentenceEdit" class="fas fa-pencil-alt"></i></td>
+          <td><i id="sentenceDelete" class="fas fa-trash-alt"></i></td>
+        </tr>
+      {{/each}}
+      </tbody>
+    </table>
+  </div>
+</template>

@@ -6,7 +6,7 @@ class SentencesCollection extends Mongo.Collection{
     const ourDoc = doc;
     ourDoc.createdAt = ourDoc.createdAt||new Date();
     const result = super.insert(ourDoc,callback);
-    
+
     return result;
   }
   update(selector, modifier) {

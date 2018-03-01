@@ -1,5 +1,5 @@
 <body>
-<link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+<link href="https://use.fontawesome.com/releases/v5.0.7/css/all.css" rel="stylesheet">
 
   <div class="navbar navbar-inverse navbar-fixed-top">
     <div class="navbar-inner">
@@ -24,45 +24,15 @@
     </div>
   </div>
 
-  <div class="container-fluid">
-    <div class="row-fluid">
+  {{> main_page }}
 
-      <div class="span3">
-        <div class="well slidebar-nav">
-          {{> word_List }}
-        </div>
-      </div>
-
-      <div class="span6 well">
-        <h4 class="text-center">Work Today</h4>
-        {{> work_Today }}
-      </div>
-
-      <div class="content-overlay"></div>
+  <!-- <footer class="footer">
+    <div class="container">
+      <span class="text-muted">Place sticky footer content here.</span>
     </div>
+  </footer> -->
 
-    <div class="row-fluid">
-      <div class="span3">
-      {{#if isEditing}}
-          {{> word_edit }}  <!-- >>wordList.html -->
-      {{/if}}
-      </div>
-      <div class="span6">
-        {{#if isDetailsOpen}}
-          {{> word_details }} <!-- >>sentences.html -->
-        {{/if}}
-      </div>
-    </div>
+  <script src="http://getbootstrap.com/2.3.2/assets/js/jquery.js"></script>
+  <script src="http://getbootstrap.com/2.3.2/assets/js/bootstrap.js"></script>
 
-
-    <footer class="footer">
-      <!-- <div class="container"> -->
-        <span class="text-muted">Place sticky footer content here.</span>
-      <!-- </div> -->
-    </footer>
-
-    <script src="http://getbootstrap.com/2.3.2/assets/js/jquery.js"></script>
-    <script src="http://getbootstrap.com/2.3.2/assets/js/bootstrap.js"></script>
-
-  </div>
 </body>
