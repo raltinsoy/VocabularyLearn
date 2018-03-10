@@ -11,8 +11,11 @@ Template.current_Works.onCreated(function appBodyOnCreated() {
 });
 
 Template.current_Works.helpers({
-  words(){
-    return Words.find();
+    words() {
+        var startDate = moment().startOf('day').format('MM/DD/YYYY');
+        var endDate = moment().add(1, 'days').format('MM/DD/YYYY');
+        return Words.find({ workDay: { $gte: startDate, $lt: endDate }
+        }, { sort: { createdAt: -1 } });
   },
 });
 

@@ -54,23 +54,66 @@ export const update = new ValidatedMethod({
   name:'words.update',
   validate:new SimpleSchema({
     _id:{type:String,},
-    boxNumber:{type:Number,},
+    step:{type:String,},
   }).validator(),
-  run({_id,boxNumber}){
+    run({ _id, step }) {
 
-    const word=Words.findOne(_id);
+        const word = Words.findOne(_id);
+        let _remindDate = moment().format('MM/DD/YYYY');
+        let _workDay = null;
 
-    if(word.boxNumber !== boxNumber-1 && word.boxNumber !== boxNumber+1){
-      throw new Meteor.Error('Birden fazla kutu atlayamazsın!');
-    }
+        if (word.remindDate != null && word.remindDate != _remindDate) {
+            throw new Meteor.Error('Date out!');
+        }
 
-    Words.update(_id,{
-      $set:{
-        boxNumber: boxNumber,
-        remindDate: moment().add(1,'days').format('MM/DD/YYYY'),
-      },
-    },);
-  },
+        if (step == "+") {
+            switch (word.boxNumber) {
+                case 0:
+                    break;
+                case 1:
+                    _remindDate = moment().add(7, 'days').format('MM/DD/YYYY');
+                    _workDay = moment().format('MM/DD/YYYY');
+                    break;
+                case 2:
+                    _remindDate = moment().add(30, 'days').format('MM/DD/YYYY');
+                    _workDay = moment().format('MM/DD/YYYY');
+                    break;
+                case 3:
+                    _workDay = moment().format('MM/DD/YYYY');
+                    break;
+                default:
+                    break;
+            }
+            word.boxNumber++;
+        }
+        else if (step == "-") {
+            switch (word.boxNumber) {
+                case 0:
+                    break;
+                case 1:
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    word.boxNumber--;
+                    break;
+                default:
+                    break;
+            }
+            word.boxNumber--;
+        }
+        else {
+            throw new Meteor.Error('Step error!');
+        }
+
+        Words.update(_id, {
+            $set: {
+                boxNumber: word.boxNumber,
+                remindDate: _remindDate,
+                workDay: _workDay,
+            },
+        }, );
+    },
 });
 
 export const remove = new ValidatedMethod({

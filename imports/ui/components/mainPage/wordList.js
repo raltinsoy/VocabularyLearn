@@ -81,9 +81,9 @@ Template.word_List.events({
     };
   },
   'click .word-right-move'(event){
-    update.call({
-      _id:this._id,
-      boxNumber:this.boxNumber+1,
+      update.call({
+          _id:this._id,
+          step: '+',
     });
   },
   'click .word-edit'(event,instance){

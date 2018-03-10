@@ -26,14 +26,14 @@ Template.month_Works.events({
   'click #wordPrev'(event){
       update.call({
         _id:this._id,
-        boxNumber:this.boxNumber-1,
+        step: '-',
       });
   },
   'click #wordNext'(event){
-    alert('sonraEklenecek');
-      // update.call({
-      //   _id:this._id,
-      //   boxNumber:this.boxNumber+1,
-      // });
+    alert('duzenle');
+    update.call({
+        _id:this._id,
+        step: '+',
+    });
   },
 });

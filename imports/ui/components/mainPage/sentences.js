@@ -27,7 +27,7 @@ Template.word_details.helpers({
       let count=0;
       const data = Sentences.find({ wordId:id } , {sort : { createdAt: -1 }}).map(function(item){
         count++;
-        const textChanged = false;
+        let textChanged = false;
         if(count == whichRowId){
           textChanged = true;
         }
