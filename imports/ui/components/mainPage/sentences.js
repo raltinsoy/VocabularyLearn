@@ -10,7 +10,6 @@ import './sentences.html';
 
 Template.body.onCreated(function appBodyOnCreated() {
   this.state = new ReactiveDict();
-  Meteor.subscribe("sentences.list");
 
   Session.setDefault({
     whichRowId:null,

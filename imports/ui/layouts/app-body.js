@@ -11,7 +11,7 @@ import '../pages/mainPage.js';
 Template.body.onCreated(function appBodyOnCreated() {
   //this.state = new ReactiveDict();
   //Meteor.subscribe("words.list");
-
+  
   Session.setDefault({
     isEditing:false,
     tmpWord:null,

@@ -30,6 +30,27 @@ export const insert = new ValidatedMethod({
   },
 });
 
+export const updateAllText = new ValidatedMethod({
+  name:'words.updateAllText',
+  validate:new SimpleSchema({
+    _id:{type:String,},
+    text:{type:String,},
+    boxNumber:{type:Number,},
+    remindDate:{type:String,},
+    workDay:{type:String,},
+  }).validator(),
+  run({_id,text,boxNumber,remindDate,workDay}){
+    Words.update(_id,{
+      $set:{
+        text:text,
+        boxNumber:boxNumber,
+        remindDate:remindDate,
+        workDay:workDay,
+      }
+    });
+  },
+});
+
 export const updateText = new ValidatedMethod({
   name:'words.updateText',
   validate:new SimpleSchema({

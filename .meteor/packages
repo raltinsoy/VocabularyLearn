@@ -21,3 +21,8 @@ aldeed:simple-schema
 reactive-dict@1.2.0
 session@1.1.7
 momentjs:moment
+kadira:flow-router
+meteor
+kadira:blaze-layout
+underscore
+less

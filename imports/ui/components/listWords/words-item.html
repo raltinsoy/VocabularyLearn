@@ -1,0 +1,26 @@
+<template name="Words_item">
+<form class="">
+    <div class="list-item {{editingClass editing}}">
+      {{word._id}}
+      <input
+        type="text"
+        name="text"
+        value="{{word.text}}">
+      <input
+        type="text"
+        name="boxNumber"
+        value="{{word.boxNumber}}">
+      <input
+        type="text"
+        name="remindDate"
+        value="{{word.remindDate}}">
+      <input
+        type="text"
+        name="workDay"
+        value="{{word.workDay}}">
+      <a class="js-delete-item delete-item" href="#">
+        <i class="fas fa-trash-alt"></i>
+      </a>
+    </div>
+</form>
+</template>

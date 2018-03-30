@@ -1,5 +1,5 @@
-<body>
-<link href="https://use.fontawesome.com/releases/v5.0.7/css/all.css" rel="stylesheet">
+<template name="App_body">
+  <link href="https://use.fontawesome.com/releases/v5.0.7/css/all.css" rel="stylesheet">
 
   <div class="navbar navbar-inverse navbar-fixed-top">
     <div class="navbar-inner">
@@ -24,7 +24,11 @@
     </div>
   </div>
 
-  {{> main_page }}
+  {{#if Template.subscriptionsReady}}
+    {{> Template.dynamic template=main}}
+  {{else}}
+    {{> App_loading}}
+  {{/if}}
 
   <!-- <footer class="footer">
     <div class="container">
@@ -35,4 +39,4 @@
   <script src="http://getbootstrap.com/2.3.2/assets/js/jquery.js"></script>
   <script src="http://getbootstrap.com/2.3.2/assets/js/bootstrap.js"></script>
 
-</body>
+</template>

@@ -11,7 +11,8 @@ import '../components/mainPage/workToday.js';
 Template.main_page.onCreated(function appBodyOnCreated() {
   this.state = new ReactiveDict();
 
-
+  this.subscribe('words.list');
+  this.subscribe("sentences.list");
   // Session.setDefault({
   //   isEditing:false,
   //   tmpWord:null,
