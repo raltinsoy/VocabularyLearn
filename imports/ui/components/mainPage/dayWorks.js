@@ -1,6 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
-import { ReactiveDict } from 'meteor/reactive-dict';
+//import { ReactiveDict } from 'meteor/reactive-dict';
 
 import { update } from '../../../api/words/methods.js';
 import { Words } from '../../../api/words/words.js';
@@ -8,7 +8,7 @@ import { Words } from '../../../api/words/words.js';
 import './dayWorks.html';
 
 Template.day_Works.onCreated(function () {
-  this.state = new ReactiveDict();
+  //this.state = new ReactiveDict();
 });
 
 Template.day_Works.helpers({

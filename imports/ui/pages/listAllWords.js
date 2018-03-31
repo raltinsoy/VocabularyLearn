@@ -5,10 +5,6 @@ import { ReactiveDict } from 'meteor/reactive-dict';
 import { Tracker } from 'meteor/tracker';
 import { $ } from 'meteor/jquery';
 import { FlowRouter } from 'meteor/kadira:flow-router';
-import { SimpleSchema } from 'meteor/aldeed:simple-schema';
-
-import '../../../public/bootstrap/css/bootstrap.css';
-import '../../../public/bootstrap/css/bootstrap-responsive.css';
 
 import './listAllWords.html';
 

@@ -1,6 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
-import { ReactiveDict } from 'meteor/reactive-dict';
+//import { ReactiveDict } from 'meteor/reactive-dict';
 
 import { Words } from '../../../api/words/words.js';
 import { insert, remove, update, updateText } from '../../../api/words/methods.js';
@@ -8,19 +8,12 @@ import { insert, remove, update, updateText } from '../../../api/words/methods.j
 import './wordList.html';
 
 Template.word_List.onCreated(function () {
-  this.state = new ReactiveDict();
-  this.subscribe("words.list");
+  //this.state = new ReactiveDict();
 
-  Session.setDefault({
-    isEditing:false,
-    tmpWord:null,
-  });
 });
 
 Template.word_edit.helpers({
   tmpWord(){
-    // const instance = Template.instance();
-    // return instance.state.get('tmpWord');
     return Session.get('tmpWord');
   },
 });
@@ -35,7 +28,7 @@ Template.word_edit.events({
     const boxNumber = Number(target.boxNumber.value);
     const remind_date = target.remindDate.value;
 
-    const tmpWord=Session.get('tmpWord'); // for _id
+    const tmpWord=Session.get('tmpWord'); // for _id - which word
 
     if(action == 'save'){
       updateText.call({

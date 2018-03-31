@@ -1,6 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
-import { ReactiveDict } from 'meteor/reactive-dict';
+//import { ReactiveDict } from 'meteor/reactive-dict';
 
 import './workToday.html';
 
@@ -9,7 +9,7 @@ import './weekWorks.js';
 import './monthWorks.js';
 
 Template.work_Today.onCreated(function appBodyOnCreated() {
-  this.state = new ReactiveDict();
+  //this.state = new ReactiveDict();
 
 });
 

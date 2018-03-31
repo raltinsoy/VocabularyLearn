@@ -4,31 +4,61 @@
   <div class="row-fluid">
     <div class="span3">
       <div class="well slidebar-nav" style="display:flex; justify-content:center;">
-        {{> word_List }}
+        {{#if isReadySubWords}}
+          {{> word_List }} <!-- >>wordList.html -->
+        {{else}}
+          <div class="wrapper-message">
+            <div class="title-message">Loading...</div>
+          </div>
+        {{/if}}
       </div>
     </div>
 
     <div class="span6 well">
       <h4 class="text-center">Work Today</h4>
-      {{> work_Today }}
+        {{#if isReadySubWords}}
+          {{> work_Today }}
+        {{else}}
+          <div class="wrapper-message">
+            <div class="title-message">Loading...</div>
+          </div>
+        {{/if}}
     </div>
 
     <div class="span3 well">
       <h4 class="text-center">All Words</h4>
-      {{> current_Works }}
+        {{#if isReadySubWords}}
+          {{> current_Works }}
+        {{else}}
+          <div class="wrapper-message">
+            <div class="title-message">Loading...</div>
+          </div>
+        {{/if}}
     </div>
-
   </div>
 
   <div class="row-fluid">
     <div class="span3">
     {{#if isEditing}}
-        {{> word_edit }}  <!-- >>wordList.html -->
+      {{#if isReadySubWords}}
+        {{> word_edit }} <!-- >>wordList.html -->
+      {{else}}
+        <div class="wrapper-message">
+          <div class="title-message">Loading...</div>
+        </div>
+      {{/if}}
     {{/if}}
     </div>
+
     <div class="span6">
       {{#if isDetailsOpen}}
-        {{> word_details }} <!-- >>sentences.html -->
+        {{#if isReadySubSentences}}
+          {{> word_details }} <!-- >>sentences.html -->
+        {{else}}
+          <div class="wrapper-message">
+            <div class="title-message">Loading...</div>
+          </div>
+        {{/if}}
       {{/if}}
     </div>
   </div>

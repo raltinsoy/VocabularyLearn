@@ -1,13 +1,13 @@
 import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
-import { ReactiveDict } from 'meteor/reactive-dict';
+//import { ReactiveDict } from 'meteor/reactive-dict';
 
 import { Words } from '../../../api/words/words.js';
 
 import './currentWorks.html';
 
 Template.current_Works.onCreated(function appBodyOnCreated() {
-  this.state = new ReactiveDict();
+  //this.state = new ReactiveDict();
 });
 
 Template.current_Works.helpers({

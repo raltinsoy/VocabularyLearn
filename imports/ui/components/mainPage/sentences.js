@@ -1,6 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
-import { ReactiveDict } from 'meteor/reactive-dict';
+//import { ReactiveDict } from 'meteor/reactive-dict';
 
 import { Sentences } from '../../../api/sentences/sentences.js';
 import { Words } from '../../../api/words/words.js';
@@ -9,11 +9,8 @@ import { insert, remove, update } from '../../../api/sentences/methods.js';
 import './sentences.html';
 
 Template.body.onCreated(function appBodyOnCreated() {
-  this.state = new ReactiveDict();
+  //this.state = new ReactiveDict();
 
-  Session.setDefault({
-    whichRowId:null,
-  });
 });
 
 Template.word_details.helpers({
