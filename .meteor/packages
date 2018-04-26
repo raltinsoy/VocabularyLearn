@@ -26,3 +26,5 @@ meteor
 kadira:blaze-layout
 underscore
 less
+http
+sergeyt:typeahead

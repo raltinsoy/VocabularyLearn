@@ -5,9 +5,7 @@ import { Template } from 'meteor/templating';
 import './app-body.html';
 import '../pages/mainPage.js';
 
-I need to add js library in body and check below import 
-import '../../../public/bootstrap/js/bootstrap.js';
-jquery
+
 
 Template.body.onCreated(function appBodyOnCreated() {
 

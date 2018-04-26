@@ -2,9 +2,12 @@
   <section id="menu">
 
       <form class="new-task form-search">
-        <div class="input-append">
-          <input type="text" autocomplete="off" name="text" class="input-medium search-query">
-          <button type="submit" class="btn">Add</button>
+        <div class="">
+          <input id="wordSearch" type="text" autocomplete="off"
+          spellcheck="off" data-source="nba" data-select="selected"
+          name="text" class="input-medium search-query typeahead">
+
+          <button type="submit" class="btn wordAdd">Add</button>
         </div>
       </form>
 
